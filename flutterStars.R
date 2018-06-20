@@ -20,28 +20,23 @@ colnames(flutter) <- c("date", "stars", "project")
 
 # Now plot
 ggplot(flutter, aes(date, stars)) +
-  geom_line(aes(color = project)) +
-  annotate(
-    "text",
-    x = c(as.Date("2018/02/27"), as.Date("2018/05/09")),
-    y = c(9000, 21000),
-    label = c("Beta 1", "I/O")
-  ) +
+  geom_area(colour = "#0298e7", fill = "#0298e7") +
+  geom_vline(xintercept = c(as.Date("2018/02/27"), as.Date("2018/05/07")), colour = "#003d75") +
+  geom_label(aes(x = as.Date("2018/02/27"), y = 25000, label = "Beta 1"),
+             size = 3,
+             family = "Open Sans") +
+  geom_label(aes(x = as.Date("2018/05/07"), y = 25000, label = "I/O"),
+             size = 3,
+             family = "Open Sans") +
   labs(title = "GitHub stars by date",
        caption = "Source: http://timqian.com/star-history/") +
-  scale_fill_fivethirtyeight() +
-  scale_x_date(
-    date_breaks = "3 months",
-    date_minor_breaks = "1 month",
-    labels = date_format("%b %y")
-  ) +
+  scale_x_date(date_breaks = "3 months", date_minor_breaks = "1 month",
+               labels = date_format("%b %y")) +
   scale_y_continuous(label = comma) +
-  coord_cartesian(xlim = c(as.Date("2016/01/01"), as.Date("2018/06/17"))) +
+  coord_cartesian(xlim = c(as.Date("2015/07/01"), as.Date("2018/06/20")), expand = FALSE) +
   theme_fivethirtyeight() +
-  theme(
-    legend.position = "none",
-    plot.title = element_text(margin = margin(0, 0, 20, 0)),
-    plot.background = element_rect(fill = "white"),
-    plot.caption = element_text(size = 9, margin = margin(20, 0, 0, 0)),
-    text = element_text(family = "Open Sans")
-  )
+  theme(legend.position = "none",
+        plot.title = element_text(margin = margin(0, 0, 20, 0)),
+        plot.background = element_rect(fill = "white"),
+        plot.caption = element_text(size = 9, margin = margin(20, 0, 0, 0)),
+        text = element_text(family = "Open Sans"))
