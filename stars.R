@@ -10,20 +10,20 @@ while (dev.cur() > 1)
   dev.off()
 
 # This is the key for the relevant Google Sheets
-starSheet <- gs_key("1s0Eyl4VLgc0dFrBsJFnrq8o_ghwFk6OchLI7GRsKfuo")
+star_sheet <- gs_key("1s0Eyl4VLgc0dFrBsJFnrq8o_ghwFk6OchLI7GRsKfuo")
 
 # Load and cleanse the Google Sheets
-flutter <- starSheet %>% gs_read(ws = "Flutter", range = "A1:B20")
+flutter <- star_sheet %>% gs_read(ws = "Flutter", range = "A1:B20")
 flutter$Date <- as.Date(flutter$Date, format = "%m/%d/%Y")
 flutter$project <- "Flutter"
 colnames(flutter) <- c("date", "stars", "project")
 
-angular <- starSheet %>% gs_read(ws = "Angular", range = "A1:B20")
+angular <- star_sheet %>% gs_read(ws = "Angular", range = "A1:B20")
 angular$Date <- as.Date(angular$Date, format = "%m/%d/%Y")
 angular$project <- "Angular"
 colnames(angular) <- c("date", "stars", "project")
 
-go <- starSheet %>% gs_read(ws = "Go", range = "A1:B20")
+go <- star_sheet %>% gs_read(ws = "Go", range = "A1:B20")
 go$Date <- as.Date(go$Date, format = "%m/%d/%Y")
 go$project <- "Go"
 colnames(go) <- c("date", "stars", "project")

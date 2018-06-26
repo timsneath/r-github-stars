@@ -10,10 +10,10 @@ while (dev.cur() > 1)
   dev.off()
 
 # This is the key for the relevant Google Sheets
-starSheet <- gs_key("1s0Eyl4VLgc0dFrBsJFnrq8o_ghwFk6OchLI7GRsKfuo")
+star_sheet <- gs_key("1s0Eyl4VLgc0dFrBsJFnrq8o_ghwFk6OchLI7GRsKfuo")
 
 # Load and cleanse the Google Sheets
-flutter <- starSheet %>% gs_read(ws = "Flutter", range = "A1:B200")
+flutter <- star_sheet %>% gs_read(ws = "Flutter", range = "A1:B200")
 flutter$Date <- as.Date(flutter$Date, format = "%m/%d/%Y")
 flutter$project <- "Flutter"
 colnames(flutter) <- c("date", "stars", "project")
@@ -22,7 +22,9 @@ colnames(flutter) <- c("date", "stars", "project")
 ggplot(flutter, aes(date, stars)) +
   #  geom_area(colour = "#0298e7", fill = "#0298e7") +
   geom_line(colour = "#0298e7", size = 2) +
-  geom_vline(xintercept = c(as.Date("2018/02/26"), as.Date("2018/05/07"), as.Date("2018/06/20")), 
+  geom_vline(xintercept = c(as.Date("2018/02/26"),
+                            as.Date("2018/05/07"),
+                            as.Date("2018/06/20")),
              colour = "#003d75") +
   geom_label(aes(x = as.Date("2018/02/26"), y = 25000, label = "Beta 1"),
              size = 3,
@@ -38,7 +40,8 @@ ggplot(flutter, aes(date, stars)) +
   scale_x_date(date_breaks = "3 months", date_minor_breaks = "1 month",
                labels = date_format("%b %y")) +
   scale_y_continuous(label = comma) +
-  coord_cartesian(xlim = c(as.Date("2015/07/01"), Sys.Date() + 21), expand = FALSE) +
+  coord_cartesian(xlim = c(as.Date("2015/07/01"), Sys.Date() + 21),
+                  expand = FALSE) +
   theme_fivethirtyeight() +
   theme(legend.position = "none",
         plot.title = element_text(margin = margin(0, 0, 20, 0)),
