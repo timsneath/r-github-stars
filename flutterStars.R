@@ -20,7 +20,8 @@ colnames(flutter) <- c("date", "stars", "project")
 
 # Now plot
 ggplot(flutter, aes(date, stars)) +
-  #  geom_area(colour = "#0298e7", fill = "#0298e7") +
+  # Alternative to geom_line -- swap with this one:
+  # geom_area(colour = "#0298e7", fill = "#0298e7") +
   geom_line(colour = "#0298e7", size = 2) +
   geom_vline(xintercept = c(as.Date("2018/02/26"),
                             as.Date("2018/05/07"),
