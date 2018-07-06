@@ -23,19 +23,19 @@ ggplot(flutter, aes(date, stars)) +
   # Alternative to geom_line -- swap with this one:
   # geom_area(colour = "#0298e7", fill = "#0298e7") +
   geom_line(colour = "#0298e7", size = 2) +
-  geom_vline(xintercept = c(as.Date("2018/02/26"),
-                            as.Date("2018/05/07"),
-                            as.Date("2018/06/20")),
-             colour = "#003d75") +
-  geom_label(aes(x = as.Date("2018/02/26"), y = 25000, label = "Beta 1"),
-             size = 3,
-             family = "Open Sans") +
-  geom_label(aes(x = as.Date("2018/05/07"), y = 25000, label = "I/O"),
-             size = 3,
-             family = "Open Sans") +
-  geom_label(aes(x = as.Date("2018/06/20"), y = 25000, label = "RP1"),
-             size = 3,
-             family = "Open Sans") +
+  # geom_vline(xintercept = c(as.Date("2018/02/26"),
+  #                           as.Date("2018/05/07"),
+  #                           as.Date("2018/06/20")),
+  #            colour = "#003d75") +
+  # geom_label(aes(x = as.Date("2018/02/26"), y = 25000, label = "Beta 1"),
+  #            size = 3,
+  #            family = "Open Sans") +
+  # geom_label(aes(x = as.Date("2018/05/07"), y = 25000, label = "I/O"),
+  #            size = 3,
+  #            family = "Open Sans") +
+  # geom_label(aes(x = as.Date("2018/06/20"), y = 25000, label = "RP1"),
+  #            size = 3,
+  #            family = "Open Sans") +
   labs(title = "GitHub stars by date",
        caption = "Source: http://timqian.com/star-history/") +
   scale_x_date(date_breaks = "3 months", date_minor_breaks = "1 month",
